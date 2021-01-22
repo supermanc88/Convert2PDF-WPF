@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Convert2PDF-WPF", "Convert2PDF-WPF\Convert2PDF-WPF.csproj", "{61AEDDB6-E4F7-46FC-84AC-4DA87B5A4CD6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61AEDDB6-E4F7-46FC-84AC-4DA87B5A4CD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61AEDDB6-E4F7-46FC-84AC-4DA87B5A4CD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61AEDDB6-E4F7-46FC-84AC-4DA87B5A4CD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61AEDDB6-E4F7-46FC-84AC-4DA87B5A4CD6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55B7CA42-8A2E-4605-9FD7-6AC090E2B86A}
+	EndGlobalSection
+EndGlobal
