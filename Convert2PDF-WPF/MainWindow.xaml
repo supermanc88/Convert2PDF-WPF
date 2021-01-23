@@ -5,8 +5,107 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Convert2PDF_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Convert2PDF" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <CheckBox Margin="{TemplateBinding Margin}"
+                                  Content="{TemplateBinding Content}"
+                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                  ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                  FocusVisualStyle="{TemplateBinding FocusVisualStyle}"
+                                  IsChecked="{Binding IsSelected,
+                                                  RelativeSource={RelativeSource TemplatedParent}}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- <Style TargetType="{x:Type ListBox}"> -->
+        <!--     <Setter Property="ItemContainerStyle"> -->
+        <!--         <Setter.Value> -->
+        <!--             <Style BasedOn="{StaticResource {x:Type ListBoxItem}}" TargetType="{x:Type ListBoxItem}"> -->
+        <!-- -->
+        <!--             </Style> -->
+        <!--         </Setter.Value> -->
+        <!--     </Setter> -->
+        <!-- </Style> -->
+    </Window.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0">
+                <!-- 输入 -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="输入" Margin="10,5,10,5" Grid.Column="0"></Label>
+                    <TextBox Name="inputDir" Margin="10,5,10,5" Grid.Column="1"></TextBox>
+                    <Button Name="inputOpenButton" Content="open"  Margin="10,5,10,5" Grid.Column="2" Click="InputOpenButtonClick"></Button>
+                </Grid>
+                <!-- 输出 -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="输出" Margin="10,5,10,5" Grid.Column="0"></Label>
+                    <TextBox Name="outputDir" Margin="10,5,10,5" Grid.Column="1"></TextBox>
+                    <Button Name="outputOpenButton" Content="open"  Margin="10,5,10,5" Grid.Column="2" Click="OutputOpenButtonClick"></Button>
+                </Grid>
+
+                <!-- 扩展选项 -->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <CheckBox Name="foreachDirCheckBox" Content="遍历子目录" Grid.Column="0"  Margin="10,5,10,5"></CheckBox>
+                    <CheckBox Content="占位" Grid.Column="1"  Margin="10,5,10,5"></CheckBox>
+                    <CheckBox Content="占位" Grid.Column="2"  Margin="10,5,10,5"></CheckBox>
+                    <CheckBox Content="占位" Grid.Row="1" Grid.Column="0"  Margin="10,5,10,5"></CheckBox>
+                </Grid>
+
+            </StackPanel>
+            <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
+
+                <!-- 进度条 -->
+                <ProgressBar Name="convertProcessBar" Height="20" Margin="10,5,10,5"></ProgressBar>
+
+
+                <!-- 转换按钮 -->
+                <Button Name="convertBotton" Content="Convert" Margin="10,5,10,5"></Button>
+            </StackPanel>
+
+        </Grid>
+
+
+        <!-- 选择框 -->
+        <ListBox Name="fileListBox" Margin="10,5,10,5" Grid.Column="1">
+            <!-- <ListBoxItem Content="11111111"></ListBoxItem> -->
+        </ListBox>
+
+
     </Grid>
 </Window>

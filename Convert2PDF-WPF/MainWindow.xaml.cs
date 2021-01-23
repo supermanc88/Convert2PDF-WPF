@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Forms;
+using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace Convert2PDF_WPF
 {
@@ -23,6 +13,39 @@ namespace Convert2PDF_WPF
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void InputOpenButtonClick(object sender, RoutedEventArgs e)
+        {
+            FolderSelectDialog dialog = new FolderSelectDialog();
+
+            if (dialog.ShowDialog())
+            {
+                string foldPath = dialog.FileName;
+                
+                outputDir.Text = foldPath;
+                inputDir.Text = foldPath;
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void OutputOpenButtonClick(object sender, RoutedEventArgs e)
+        {
+            FolderSelectDialog dialog = new FolderSelectDialog();
+
+            if (dialog.ShowDialog())
+            {
+                string foldPath = dialog.FileName;
+                
+                outputDir.Text = foldPath;
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }
