@@ -7,31 +7,6 @@
         mc:Ignorable="d"
         Title="Convert2PDF" Height="450" Width="800">
     <Window.Resources>
-        <Style TargetType="{x:Type ListBoxItem}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                        <CheckBox Margin="{TemplateBinding Margin}"
-                                  Content="{TemplateBinding Content}"
-                                  ContentTemplate="{TemplateBinding ContentTemplate}"
-                                  ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                                  FocusVisualStyle="{TemplateBinding FocusVisualStyle}"
-                                  IsChecked="{Binding IsSelected,
-                                                  RelativeSource={RelativeSource TemplatedParent}}" />
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <!-- <Style TargetType="{x:Type ListBox}"> -->
-        <!--     <Setter Property="ItemContainerStyle"> -->
-        <!--         <Setter.Value> -->
-        <!--             <Style BasedOn="{StaticResource {x:Type ListBoxItem}}" TargetType="{x:Type ListBoxItem}"> -->
-        <!-- -->
-        <!--             </Style> -->
-        <!--         </Setter.Value> -->
-        <!--     </Setter> -->
-        <!-- </Style> -->
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -101,10 +76,17 @@
         </Grid>
 
 
-        <!-- 选择框 -->
-        <ListBox Name="fileListBox" Margin="10,5,10,5" Grid.Column="1">
-            <!-- <ListBoxItem Content="11111111"></ListBoxItem> -->
-        </ListBox>
+        <!-- TreeView -->
+        <TreeView Name="fileTreeView" Margin="10,5,10,5" Grid.Column="1">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type local:DirectoryTree}" ItemsSource="{Binding Directories}">
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding Path=IsChecked}" IsTabStop="False" Focusable="False" HorizontalAlignment="Center" />
+                        <TextBlock Text="{Binding Path=Info}" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
 
 
     </Grid>

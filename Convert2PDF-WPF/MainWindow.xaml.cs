@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Forms;
+using MessageBox = System.Windows.MessageBox;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace Convert2PDF_WPF
@@ -25,10 +27,18 @@ namespace Convert2PDF_WPF
                 
                 outputDir.Text = foldPath;
                 inputDir.Text = foldPath;
+
+                // DirectoryInfo info = new DirectoryInfo("C:\\Users\\CHM\\Google Drive\\1800大卡食谱.doc");
+                // MessageBox.Show(info.ToString());
             }
             else
             {
                 return;
+            }
+
+            if (inputDir.Text != "")
+            {
+                fileTreeView.ItemsSource = DirectoryTree.InitRootPath(inputDir.Text);
             }
         }
 
