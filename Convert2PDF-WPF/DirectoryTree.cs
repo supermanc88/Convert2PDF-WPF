@@ -100,7 +100,20 @@ namespace Convert2PDF_WPF
                         {
                             DirectoryInfo dinfo = new DirectoryInfo(Info.FullName);
                             foreach (FileSystemInfo fi in dinfo.GetFileSystemInfos())
-                                this.dirs.Add(new DirectoryTree(this, fi, this.isChecked == true));
+                            {
+                                if ((fi.Attributes & FileAttributes.Hidden) == FileAttributes.Hidden)
+                                    continue;
+
+                                if ((fi.Attributes & FileAttributes.Directory) == FileAttributes.Directory)
+                                {
+                                    this.dirs.Add(new DirectoryTree(this, fi, this.isChecked == true));
+                                }
+
+                                if (fi.Extension == ".docx" || fi.Extension == ".doc")
+                                {
+                                    this.dirs.Add(new DirectoryTree(this, fi, this.isChecked == true));
+                                }
+                            }
                         }
                         
                     }
@@ -148,7 +161,7 @@ namespace Convert2PDF_WPF
             }
         }
         private Boolean? isChecked;
-        private ObservableCollection<DirectoryTree> dirs;
+        public ObservableCollection<DirectoryTree> dirs { get; set; }
         private Boolean isDir;
     }
 }
